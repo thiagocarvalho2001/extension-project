@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imgs/icon.png') }}">
+    <title>Registrar Reclamação</title>
+</head>
+<body>
+    <h1>Registrar Nova Reclamação</h1>
+    <form action="/reclamacoes" method="POST" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo" required><br><br>
+
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" required></textarea><br><br>
+
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" required><br><br>
+
+        <label for="imagem">Imagem:</label>
+        <input type="file" name="imagem"><br><br>
+
+        <button type="submit">Registrar Reclamação</button>
+    </form>
+</body>
+</html>

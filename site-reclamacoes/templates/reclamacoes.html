@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reclamações Registradas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reclamacoes.css') }}">
+</head>
+<body>
+    <h1>Reclamações Registradas</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>E-mail</th>
+                <th>Imagem</th>
+                <th>Status</th>
+                <th>Data de Criação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reclamacao in reclamacoes %}
+            <tr>
+                <td>{{ reclamacao['id'] }}</td>
+                <td>{{ reclamacao['titulo'] }}</td>
+                <td>{{ reclamacao['descricao'] }}</td>
+                <td>{{ reclamacao['email'] }}</td>
+                <td>
+                    {% if reclamacao['imagem'] %}
+                        <img src="{{ url_for('exibir_imagem', id=reclamacao['id']) }}" alt="Imagem da Reclamação" width="100">
+                    {% else %}
+                        Nenhuma imagem
+                    {% endif %}
+                </td>
+                <td>{{ reclamacao['status'] }}</td>
+                <td>{{ reclamacao['created_at'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/">Registrar nova reclamação</a>
+</body>
+</html>
